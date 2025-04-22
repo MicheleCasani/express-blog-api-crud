@@ -5,7 +5,7 @@ const express = require('express')
 const router = express.Router();
 
 // importo i dati dei post
-const posts = require('../data/data.js')
+const posts = require('../data/posts.js')
 
 // DEFINISCO LE ROTTE PER I POST
 
