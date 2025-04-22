@@ -7,6 +7,9 @@ const router = express.Router();
 // importo i dati dei post
 const posts = require('../data/posts.js')
 
+// importo il controller per i post
+const postsController = require('../controllers/postsController.js');
+
 // DEFINISCO LE ROTTE PER I POST
 
 // index
