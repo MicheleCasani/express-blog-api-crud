@@ -2,7 +2,15 @@
 const posts = require('../data/posts.js');
 
 function index(req, res) {
-    res.json(posts);
+    let key = req.query.tags;
+    let filteredPosts = posts;
+
+    if(key){
+        filteredPosts = posts.filter(function (element){
+            return element.tags.includes(key);
+        })
+    }
+    res.json(filteredPosts); 
 }
 
 function show(req, res) {
@@ -11,7 +19,7 @@ function show(req, res) {
     });
 
     // faccio il controllo in caso di errore
-    if(post === undefined){
+    if (post === undefined) {
         res.status(404);
         return res.json({
             status: 404,
@@ -37,11 +45,11 @@ function modify(req, res) {
 
 function destroy(req, res) {
     const id = parseInt(req.params.id)
-    const post = posts.find(function (element){
+    const post = posts.find(function (element) {
         return element.id === id;
     })
 
-    if(post === undefined){
+    if (post === undefined) {
         res.status(404);
         return res.json({
             status: 404,
