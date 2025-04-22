@@ -36,10 +36,10 @@ function modify(req, res) {
 function destroy(req, res) {
     const id = parseInt(req.params.id)
     const post = posts.find(function (element){
-        return element.id == id;
+        return element.id === id;
     })
 
-    if(post == undefined){
+    if(post === undefined){
         res.status(404);
         return res.json({
             status: 404,
