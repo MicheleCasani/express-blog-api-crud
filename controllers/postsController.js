@@ -7,15 +7,17 @@ function index(req, res) {
 
 function show(req, res) {
     const post = posts.find(function (element) {
-        return element.id == req.params.id;
+        return element.id === parseInt(req.params.id);
     });
 
     // faccio il controllo in caso di errore
-    if (post == undefined) {
-         res.json({
+    if(post === undefined){
+        res.status(404);
+        return res.json({
+            status: 404,
             error: "not found",
             message: "Post non trovato"
-        });
+        })
     }
 
     res.json(post);
