@@ -34,8 +34,23 @@ function modify(req, res) {
 }
 
 function destroy(req, res) {
+    const id = parseInt(req.params.id)
+    const post = posts.find(function (element){
+        return element.id == id;
+    })
 
-    res.json('elimino il post con id:' + req.params.id)
+    if(post == undefined){
+        res.status(404);
+        return res.json({
+            status: 404,
+            error: "not found",
+            message: "Post non trovato"
+        })
+    }
+    posts.splice(posts.indexOf(post), 1);
+
+    res.sendStatus(204);
+    console.log(posts);
 }
 
 // esporto le funzioni
