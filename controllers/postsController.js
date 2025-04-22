@@ -10,7 +10,19 @@ function index(req, res) {
             return element.tags.includes(key);
         })
     }
+
+    // faccio il controllo in caso di errore
+    if (filteredPosts.length === 0) {
+        res.status(404);
+        return res.json({
+            status: 404,
+            error: "not found",
+            message: "Post non trovato"
+        })
+    }
+
     res.json(filteredPosts); 
+
 }
 
 function show(req, res) {
