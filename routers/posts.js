@@ -16,19 +16,19 @@ const postsController = require('../controllers/postsController.js');
 router.get('/', postsController.index);
 
 // show
-router.get('/:id', postsController.index);
+router.get('/:id', postsController.show);
 
 // store
-router.get('/', postsController.store);
+router.post('/', postsController.store);
 
 // update (put)
-router.get('/:id', postsController.update);
+router.put('/:id', postsController.update);
 
 // modify (patch)
-router.get('/:id', postsController.modify);
+router.patch('/:id', postsController.modify);
 
 // delete
-router.get('/:id', postsController.destroy);
+router.delete('/:id', postsController.destroy);
 
 // esporto il router
 module.exports = router;
