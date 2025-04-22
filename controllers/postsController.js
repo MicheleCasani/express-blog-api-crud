@@ -7,10 +7,18 @@ function index(req, res) {
 
 function show(req, res) {
     const post = posts.find(function (element) {
-        return element.id == req.params.id
+        return element.id == req.params.id;
     });
 
-    res.json(post)
+    // faccio il controllo in caso di errore
+    if (post == undefined) {
+         res.json({
+            error: "not found",
+            message: "Post non trovato"
+        });
+    }
+
+    res.json(post);
 }
 
 function store(req, res) {
@@ -26,6 +34,7 @@ function modify(req, res) {
 }
 
 function destroy(req, res) {
+
     res.json('elimino il post con id:' + req.params.id)
 }
 
