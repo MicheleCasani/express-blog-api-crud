@@ -35,6 +35,7 @@ function show(req, res) {
     });
 
     // faccio il controllo in caso di errore
+    // (!posst) è uguale a (post === undefined)
     if (post === undefined) {
         res.status(404);
         return res.json({
