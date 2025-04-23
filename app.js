@@ -8,7 +8,7 @@ const app = express();
 const port = 3000;
 
 // importo router
-const postsRouter = require('./routers/posts.js')
+const postsRouter = require('./routers/routerPosts.js')
 
 // instrada le richieste che iniziano con /posts al router postsRouter
 app.use('/posts', postsRouter)
