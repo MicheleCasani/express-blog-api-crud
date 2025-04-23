@@ -18,7 +18,7 @@ router.get('/', postsController.index);
 // show
 router.get('/:id', postsController.show);
 
-// store
+// store (post)
 router.post('/', postsController.store);
 
 // update (put)
@@ -27,7 +27,7 @@ router.put('/:id', postsController.update);
 // modify (patch)
 router.patch('/:id', postsController.modify);
 
-// delete
+// destroy (delete)
 router.delete('/:id', postsController.destroy);
 
 // esporto il router
