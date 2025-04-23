@@ -10,6 +10,9 @@ const port = 3000;
 // importo router
 const postsRouter = require('./routers/routerPosts.js')
 
+// indico ad express di trattare i body delle richieste come json in modo da poterli leggere
+app.use(express.json())
+
 // instrada le richieste che iniziano con /posts al router postsRouter
 app.use('/posts', postsRouter)
 

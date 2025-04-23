@@ -5,6 +5,7 @@ const posts = require('../data/posts.js');
 
 // index
 function index(req, res) {
+
     let key = req.query.tags;
     let filteredPosts = posts;
 
@@ -30,12 +31,13 @@ function index(req, res) {
 
 // show
 function show(req, res) {
+
     const post = posts.find(function (element) {
         return element.id === parseInt(req.params.id);
     });
 
     // faccio il controllo in caso di errore
-    // (!posst) è uguale a (post === undefined)
+    // (!post) è uguale a (post === undefined)
     if (post === undefined) {
         res.status(404);
         return res.json({
@@ -50,21 +52,83 @@ function show(req, res) {
 
 // store (post)
 function store(req, res) {
-    res.json('creo un nuovo elemento')
+
+    const newId = posts[posts.length -1].id + 1;
+    const newPost ={
+        id: newId,
+        title: req.body.title,
+        content: req.body.content,
+        image: req.body.image,
+        tags: req.body.tags,
+
+    }
+    posts.push(newPost);
+
+    res.status(201);
+
+    console.log(posts);
+
+    res.json(newPost);
+
+    
+  
 }
 
 // update (put)
 function update(req, res) {
-    res.json('mdifico il post con id:' + req.params.id)
+
+    const id = parseInt(req.params.id)
+    const post = posts.find(function (element) {
+        return element.id === id;
+    })
+
+    if (post === undefined) {
+        res.status(404);
+        return res.json({
+            status: 404,
+            error: "not found",
+            message: "Post non trovato"
+        })
+    }
+    post.title = req.body.title;
+    post.content = req.body.content;
+    post.image = req.body.image;
+    post.tags = req.body.tags;
+
+    console.log(posts);
+   
+    res.json(post);
 }
 
 // modify (patch)
 function modify(req, res) {
-    res.json('mdifica parziale del post con id:' + req.params.id)
+
+    const id = parseInt(req.params.id)
+    const post = posts.find(function (element) {
+        return element.id === id;
+    })
+
+    if (post === undefined) {
+        res.status(404);
+        return res.json({
+            status: 404,
+            error: "not found",
+            message: "Post non trovato"
+        })
+    }
+
+    post.title = req.body.title;
+    post.tags = req.body.tags;
+
+    console.log(posts);
+   
+    res.json(post);
+
 }
 
 // destroy (delete)
 function destroy(req, res) {
+
     const id = parseInt(req.params.id)
     const post = posts.find(function (element) {
         return element.id === id;
