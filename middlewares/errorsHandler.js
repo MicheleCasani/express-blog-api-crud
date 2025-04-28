@@ -1,4 +1,4 @@
-function errorsHandler (err , req, res, next){
+function errorsHandler(err, req, res, next) {
     res.status(500);
 
     res.json({

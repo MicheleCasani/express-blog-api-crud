@@ -18,13 +18,8 @@ const errorsHandler = require ('./middlewares/errorsHandler.js')
 // notFound
 const notFound = require ('./middlewares/notFound.js')
 
-
 // importo il middleware checkTime
 app.use(checkTime);
-
-
-// importo ilmiddleware errorsHandles
-app.use(errorsHandler);
 
 // indico ad express di trattare i body delle richieste come json in modo da poterli leggere
 app.use(express.json())
@@ -34,6 +29,9 @@ app.use('/posts', postsRouter)
 
 // importo il middleware notFound
 app.use(notFound);
+
+// importo ilmiddleware errorsHandles
+app.use(errorsHandler);
 
 // importo la cartella public, che contiene file statici
 app.use('/imgs', express.static('public/imgs'));
