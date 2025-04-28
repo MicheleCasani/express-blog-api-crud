@@ -6,7 +6,7 @@ const posts = require('../data/posts.js');
 // index
 function index(req, res) {
 
-// funzione "finta" utile a simular eun errore per testare il middleware errorsHandler
+// funzione "finta" utile a simulare un errore per testare il middleware errorsHandler
     myFunction();
 
     // creo la variabile che contiene il valore della query string (?tags=...) 
