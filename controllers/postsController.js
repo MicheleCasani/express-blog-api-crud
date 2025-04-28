@@ -6,6 +6,7 @@ const posts = require('../data/posts.js');
 // index
 function index(req, res) {
 
+
     // creo la variabile che contiene il valore della query string (?tags=...) 
     let key = req.query.tags;
 
@@ -30,6 +31,7 @@ function index(req, res) {
     }
 
     res.json(filteredPosts);
+    console.log(filteredPosts);
 
 }
 

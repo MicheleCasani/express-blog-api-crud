@@ -10,6 +10,21 @@ const port = 3000;
 // importo router
 const postsRouter = require('./routers/routerPosts.js')
 
+// dichiaro la variabile che contiene il middleware checkTime
+const checkTime = require('./middlewares/checkTime.js')
+// importo il middleware checkTime
+app.use(checkTime);
+
+// dichiaro la variabile che che contiene il middleware errorsHandles
+const errorsHandler = require ('./middlewares/errorsHandler.js')
+// importo ilmiddleware errorsHandles
+app.use(errorsHandler);
+
+// dichiaro la variabile che che contiene il middleware notFound
+const notFound = require ('./middlewares/notFound.js')
+// importo ilmiddleware notFound
+app.use(notFound);
+
 // indico ad express di trattare i body delle richieste come json in modo da poterli leggere
 app.use(express.json())
 
